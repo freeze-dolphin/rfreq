@@ -6,14 +6,6 @@ use std::{fs, process};
 #[derive(Parser, Debug)]
 #[clap(author, version)]
 pub struct RuntimeArgs {
-    /*
-    #[clap(short, long)]
-    name: String,
-
-    /// Number of times to greet
-    #[clap(short, long, default_value_t = 1)]
-    count: u8,
-     */
     #[clap(short, long)]
     pub filter: String,
 
