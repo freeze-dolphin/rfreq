@@ -1,8 +1,8 @@
-use std::time::Instant;
-use rfreq::RuntimeArgs;
 use clap::Parser;
 use prettytable::{format, row, Table};
 use regex::Regex;
+use rfreq::RuntimeArgs;
+use std::time::Instant;
 
 #[macro_use]
 extern crate prettytable;
@@ -17,13 +17,13 @@ fn main() {
     let time_cost_read = start.elapsed();
     let start = Instant::now();
 
-    let stas = rfreq::statistics(&content, &args.case_sensitive);
+    let stas = rfreq::statistics(content.as_str(), args.case_insensitive);
 
     let time_cost_statstics = start.elapsed();
     let start = Instant::now();
 
     let mut exp = args.filter;
-    if !args.case_sensitive {
+    if !args.case_insensitive {
         exp = exp.to_lowercase();
     }
     let filter = rfreq::filter(&stas, Regex::new(&exp).expect("illegal regular expression"));
@@ -51,6 +51,10 @@ fn main() {
         table.printstd();
     }
 
-
-    println!("\ntime costs:\n - read: {}ms\n - statistics: {}ms\n - filter: {}ms", time_cost_read.as_millis(), time_cost_statstics.as_millis(), time_cost_analyse.as_millis());
+    println!(
+        "\ntime costs:\n - read: {}ms\n - statistics: {}ms\n - filter: {}ms",
+        time_cost_read.as_millis(),
+        time_cost_statstics.as_millis(),
+        time_cost_analyse.as_millis()
+    );
 }
