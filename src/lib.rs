@@ -41,7 +41,7 @@ pub fn statistics(content: &str, case_insensitive: bool) -> StatisticBuffer {
 
         let mut f = s.to_string();
 
-        if !case_insensitive {
+        if case_insensitive {
             f = f.to_lowercase();
         }
         db.insert(f, db.get(s).unwrap_or(&0) + 1);
