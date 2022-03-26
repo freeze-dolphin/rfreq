@@ -22,8 +22,8 @@ OPTIONS:
     -V, --version            Print version information
 ```
 
-for small file, you can use this in a normal way  
-and for big file, it is recommended to do like this: 
+for small files, you can use this in a normal way  
+and for big files, it is recommended to do like this: 
 
 ```shell
 rfreq -f "your regex" -i "filename" | tee result.txt
