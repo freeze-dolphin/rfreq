@@ -6,16 +6,16 @@ use std::{fs, process};
 #[derive(Parser, Debug)]
 #[clap(author, version)]
 pub struct RuntimeArgs {
-    #[clap(short, long)]
+    #[clap(short, long, help = "Regex filter")]
     pub filter: String,
 
-    #[clap(short, long)]
+    #[clap(short, long, help = "File to perform analysis on")]
     pub input: String,
 
-    #[clap(short, long)]
+    #[clap(short, long, help = "Turn on case insensitive")]
     pub case_insensitive: bool,
 
-    #[clap(short, long)]
+    #[clap(short, long, help = "Print result without using table form")]
     pub raw_print: bool,
 }
 
