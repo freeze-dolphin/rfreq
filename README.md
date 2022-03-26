@@ -1,20 +1,30 @@
 # rfreq
-A simple tool for word frequency statistics.
+
+a simple tool for word frequency statistics.
 
 ## usage
 
-Just follow the help message:
+just follow the help message:
 
-```
+```log
 > rfreq --help
+
 USAGE:
     rfreq [OPTIONS] --filter <FILTER> --input <INPUT>
 
 OPTIONS:
-    -c, --case-sensitive     Is case sensitive
-    -f, --filter <FILTER>    The regular expression for searching
+    -c, --case-sensitive     Consider different cases as different words
+    -f, --filter <FILTER>    Regex filter
     -h, --help               Print help information
-    -i, --input <INPUT>      The filename
-    -r, --raw-print          No prettified outputs
+    -i, --input <INPUT>      File to perform analysis on
+    -n, --no-sorting         Disable sorting
+    -r, --raw-print          Print result without using table form
     -V, --version            Print version information
+```
+
+for small file, you can use this in a normal way  
+and for big file, it is recommended to do like this: 
+
+```shell
+rfreq -f "your regex" -i "filename" | tee result.txt
 ```
